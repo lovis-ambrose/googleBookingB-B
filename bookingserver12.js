@@ -1,6 +1,6 @@
 const hostname = '127.0.0.1';
 const port = 8080;
-const usernamePassword = "bitebooker:bitebooker2";
+const usernamePassword = "bitebooker:bitebooker1";
 
 const https = require('https');
 const fs = require('fs');
