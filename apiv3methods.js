@@ -45,7 +45,6 @@ function HealthCheck(requestBody) {
   return responseBody;
 }
 
-
 /**
  * BatchAvailabilityLookup method
  * https://developers.google.com/maps-booking/reference/rest-api-v3/batchavailabilitylookup-method
@@ -88,60 +87,60 @@ function BatchAvailabilityLookup(requestBody) {
   return responseBody
 }
 
-function BatchAvailabilityLookup(requestBody) {
-  const req = JSON.parse(requestBody);
+// function BatchAvailabilityLookup(requestBody) {
+//   const req = JSON.parse(requestBody);
 
-  if (!req.slot_time || !req.merchant_id) {
-    throw new Error("Invalid request: missing slot_time or merchant_id");
-  }
+//   if (!req.slot_time || !req.merchant_id) {
+//     throw new Error("Invalid request: missing slot_time or merchant_id");
+//   }
 
-  // Available slots for testing
-  const availableSlots = [
-    {
-      service_id: 5678,
-      start_sec: 1606467600,
-      duration_sec: 1800,
-      availability_tag: "AVAILABLE"
-    },
-    {
-      service_id: 5678,
-      start_sec: 1606469400,
-      duration_sec: 1800,
-      availability_tag: "AVAILABLE"
-    },
-    {
-      service_id: 5678,
-      start_sec: 1606471200,
-      duration_sec: 1800,
-      availability_tag: "AVAILABLE"
-    }
-  ];
+//   // Available slots for testing
+//   const availableSlots = [
+//     {
+//       service_id: 5678,
+//       start_sec: 1606467600,
+//       duration_sec: 1800,
+//       availability_tag: "AVAILABLE"
+//     },
+//     {
+//       service_id: 5678,
+//       start_sec: 1606469400,
+//       duration_sec: 1800,
+//       availability_tag: "AVAILABLE"
+//     },
+//     {
+//       service_id: 5678,
+//       start_sec: 1606471200,
+//       duration_sec: 1800,
+//       availability_tag: "AVAILABLE"
+//     }
+//   ];
 
-  // Logging the input request and available slots for debugging
-  console.log("Request Slot Times:", req.slot_time);
-  console.log("Available Slots:", availableSlots);
+//   // Logging the input request and available slots for debugging
+//   console.log("Request Slot Times:", req.slot_time);
+//   console.log("Available Slots:", availableSlots);
 
-  // Find matching slots based on the request
-  const slot_time_availability = req.slot_time.map((slot) => {
-    const availableSlot = availableSlots.find((availableSlot) =>
-      availableSlot.service_id === parseInt(slot.service_id) &&
-      availableSlot.start_sec === parseInt(slot.start_sec) &&
-      availableSlot.duration_sec === parseInt(slot.duration_sec)
-    );
+//   // Find matching slots based on the request
+//   const slot_time_availability = req.slot_time.map((slot) => {
+//     const availableSlot = availableSlots.find((availableSlot) =>
+//       availableSlot.service_id === parseInt(slot.service_id) &&
+//       availableSlot.start_sec === parseInt(slot.start_sec) &&
+//       availableSlot.duration_sec === parseInt(slot.duration_sec)
+//     );
 
-    return {
-      ...slot,
-      availability_tag: availableSlot ? "AVAILABLE" : "UNAVAILABLE"
-    };
-  });
+//     return {
+//       ...slot,
+//       availability_tag: availableSlot ? "AVAILABLE" : "UNAVAILABLE"
+//     };
+//   });
 
-  const resp = {
-    slot_time_availability: slot_time_availability
-  };
+//   const resp = {
+//     slot_time_availability: slot_time_availability
+//   };
 
-  const responseBody = JSON.stringify(resp);
-  return responseBody;
-}
+//   const responseBody = JSON.stringify(resp);
+//   return responseBody;
+// }
 
 
 /**
@@ -288,19 +287,19 @@ function CheckOrderFulfillability(requestBody) {
   // ...
   // CheckOrderFulfillabilityResponse
   // e.g
-  var resp = {
-    fulfillability: {
-      result: 'CAN_FULFILL',
-      item_fulfillability: [{}]  // individual item fullfilability
-    },
-    fees_and_taxes: {
-      price_micros: 1000000,  // total price in micros, e.g. 1USD = 1000000
-      currency_code: 'USD'
-    }
-  };
-  const responseBody = JSON.stringify(resp);
+  // var resp = {
+  //   fulfillability: {
+  //     result: 'CAN_FULFILL',
+  //     item_fulfillability: [{}]  // individual item fullfilability
+  //   },
+  //   fees_and_taxes: {
+  //     price_micros: 1000000,  // total price in micros, e.g. 1USD = 1000000
+  //     currency_code: 'USD'
+  //   }
+  // };
+  // const responseBody = JSON.stringify(resp);
 
-  return responseBody;
+  // return responseBody;
 
   throw new Error('Not implemented yet');
 }
@@ -320,15 +319,15 @@ function CreateOrder(requestBody) {
   // ...
   // CreateOrderResponse
   // e.g
-  var resp = {
-    order: {
-      order_id: '123',  // new order id
-      merchant_id: req.order.mercant_id,
-      item: [{}]  // populate individual LineItems, etc.
-    }
-  };
-  const responseBody = JSON.stringify(resp);
-  return responseBody;
+  // var resp = {
+  //   order: {
+  //     order_id: '123',  // new order id
+  //     merchant_id: req.order.mercant_id,
+  //     item: [{}]  // populate individual LineItems, etc.
+  //   }
+  // };
+  // const responseBody = JSON.stringify(resp);
+  // return responseBody;
 
   throw new Error('Not implemented yet');
 }
@@ -347,11 +346,11 @@ function ListOrders(requestBody) {
   // ...
   // ListOrdersResponse
   // e.g
-  var resp = {
-    order: [{}]  // populate all orders for the user_id or order_ids
-  };
-  const responseBody = JSON.stringify(resp);
-  return responseBody;
+  // var resp = {
+  //   order: [{}]  // populate all orders for the user_id or order_ids
+  // };
+  // const responseBody = JSON.stringify(resp);
+  // return responseBody;
 
   throw new Error('Not implemented yet');
 }
@@ -371,24 +370,24 @@ function BatchGetWaitEstimates(requestBody) {
   // ...
   // BatchGetWaitEstimatesResponse
   // e.g
-  var resp = {
-    waitlist_status: 'OPEN',
-    wait_estimate: [
-      {
-        party_size: 5,
-        wait_length: {
-          parties_ahead_count: 5,
-          estimated_seat_time_range: {
-            start_seconds: 123456,
-            end_seconds: 123456
-          }
-        },
-        waitlist_confirmation_mode: 'WAITLIST_CONFIRMATION_MODE_SYNCHRONOUS'
-      }
-    ]
-  };
-  const responseBody = JSON.stringify(resp);
-  return responseBody;
+  // var resp = {
+  //   waitlist_status: 'OPEN',
+  //   wait_estimate: [
+  //     {
+  //       party_size: 5,
+  //       wait_length: {
+  //         parties_ahead_count: 5,
+  //         estimated_seat_time_range: {
+  //           start_seconds: 123456,
+  //           end_seconds: 123456
+  //         }
+  //       },
+  //       waitlist_confirmation_mode: 'WAITLIST_CONFIRMATION_MODE_SYNCHRONOUS'
+  //     }
+  //   ]
+  // };
+  // const responseBody = JSON.stringify(resp);
+  // return responseBody;
 
   throw new Error('Not implemented yet');
 }
