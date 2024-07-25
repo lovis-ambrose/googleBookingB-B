@@ -120,7 +120,7 @@ const server = http.createServer((request, response) => {
         } else if (method === 'POST') {
           switch (path) {
             // POST /v3/CheckAvailability/
-            case '/v3/batchavailabilitylookup':
+            case '/v3/BatchAvailabilityLookup/':
               try {
                 console.log(`Received request for /v3/batchavailabilitylookup: ${requestBody}`);
                 responseBody = apiv3.BatchAvailabilityLookup(requestBody);
@@ -141,7 +141,7 @@ const server = http.createServer((request, response) => {
               }
               break;
             // POST /v3/CreateBooking/
-            case '/v3/createbooking':
+            case '/v3/CreateBooking/':
               try {
                 responseBody = apiv3.CreateBooking(requestBody);
               } catch (e) {
@@ -151,7 +151,7 @@ const server = http.createServer((request, response) => {
               }
               break;
             // POST /v3/UpdateBooking/
-            case '/v3/updatebooking':
+            case '/v3/UpdateBooking/':
               try {
                 responseBody = apiv3.UpdateBooking(requestBody);
               } catch (e) {
